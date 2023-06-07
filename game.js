@@ -3,12 +3,12 @@ var buttonColours = ["red", "blue", "green", "yellow"];
 var gamePattern = [];
 var userInput = [];
 
-var started = false;
+var started = true;
 var level = 0;
 
 //starting the game
 $(document).keypress(function () {
-  if (!started) {
+  if (started) {
     $("#level-title").text("Level " + level);
     nextSequence();
     started = true;
@@ -39,7 +39,7 @@ function checkAnswer(currentLevel) {
 
       setTimeout(function () {
         $("body").removeClass("next-round");
-      }, 200);
+      }, 500);
     }
   } else {
     playSound("wrong");
@@ -48,7 +48,7 @@ function checkAnswer(currentLevel) {
 
     setTimeout(function () {
       $("body").removeClass("game-over");
-    }, 200);
+    }, 500);
 
     startOver();
   }
@@ -75,7 +75,7 @@ function animatePress(currentColor) {
   $("#" + currentColor).addClass("pressed");
   setTimeout(function () {
     $("#" + currentColor).removeClass("pressed");
-  }, 100);
+  }, 500);
 }
 
 //play sound
@@ -88,5 +88,5 @@ function playSound(name) {
 function startOver() {
   level = 0;
   gamePattern = [];
-  started = false;
+  started = true;
 }
